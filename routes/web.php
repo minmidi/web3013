@@ -23,5 +23,7 @@ Route::prefix('admin')
         Route::get('products/del/{id}','ProductController@delete')->name('products_del');
         Route::get('products/add','ProductController@add')->name('products_add');
         Route::post('products/add','ProductController@save_add')->name('products_add');
+        Route::get('products/edit/{id}','ProductController@edit')->name('products_edit');
+        Route::post('products/edit/{id}','ProductController@save_edit')->name('products_edit');
     });
 

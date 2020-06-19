@@ -14,6 +14,12 @@
         <a href="{{ route('products_add') }}" class="btn btn-success"> thêm mới</a>
     </form>
 
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+    @endif
+
     <table class="table">
         <thead>
         <tr class="table-info">
@@ -32,12 +38,12 @@
         <tr>
             <td>{{ $pro->id }}</td>
             <td>{{ $pro->name }}</td>
-            <td>{{ $pro->image }}</td>
+            <td><img src="{{ asset('images/'.$pro->images) }}" alt="hình ảnh" height="100" width="150"></td>
             <td>{{ $pro->price }}</td>
             <td>{{ $pro->star }}</td>
             <td>{{ $pro->views }}</td>
             <td>
-                <a href="" class="edit_admin"><i class="fas fa-edit"></i></a>
+                <a href="{{ route('products_edit',['id'=>$pro->id]) }}" class="edit_admin"><i class="fas fa-edit"></i></a>
             </td>
             <td>
                 <a href="{{ route('products_del',['id'=>$pro->id]) }}"onclick="return confirm('bạn có chắc không')" class="delete_admin"><i class="fas fa-trash-alt"></i></a>

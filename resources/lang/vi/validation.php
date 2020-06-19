@@ -56,7 +56,7 @@ return [
         'string' => 'The :attribute must be greater than or equal :value characters.',
         'array' => 'The :attribute must have :value items or more.',
     ],
-    'image' => 'The :attribute must be an image.',
+    'image' => 'Tệp bạn chọn không phải là :attribute, vui lòng chọn lại.',
     'in' => 'The selected :attribute is invalid.',
     'in_array' => 'The :attribute field does not exist in :other.',
     'integer' => 'The :attribute must be an integer.',
@@ -96,7 +96,7 @@ return [
     'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
-    'required' => 'The :attribute không được để trống.',
+    'required' => ':attribute không được để trống.',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
     'required_with' => 'The :attribute field is required when :values is present.',
@@ -148,6 +148,11 @@ return [
 
     'attributes' => [
         'name'=>'Tên ',
+        'images' => 'hình ảnh',
+        'price' => 'Giá',
+        'short_desc' => 'Mô tả ngắn',
+        'detail' => 'Mô tả chi tiết',
+        'views' => 'Lượt xem',
     ],
 
 ];
