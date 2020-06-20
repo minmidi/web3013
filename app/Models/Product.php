@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    // gọi bảng trong model
+    // CALL MODELS PRODUCTS
     protected $table = 'products';
-    // gọi dữ liệu trong bảng
+    // CALL VARIABLE PRODUCTS
     protected $fillable = ['id','name','images','cate_id','price','short_desc','detail','star','created_at','views'];
 
+    // CREATE FORENKEY PRODUCT WITH CATEGORIES
     public function categories(){
         return $this->belongsTo('App\Models\categories', 'cate_id', 'id');
     }
 
+    // SEARCH FUNCTIONS
     public function scopeSearch($query, ...$colums)
     {
         $keyWord = request()->search;

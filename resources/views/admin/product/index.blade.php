@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('title','product')
 @section('active','Sản phẩm')
+@section('active_1','active')
 @section('url','Danh sách sản phẩm')
 @section('main')
 
@@ -14,21 +15,16 @@
         <a href="{{ route('products_add') }}" class="btn btn-success"> thêm mới</a>
     </form>
 
-    @if(session()->has('message'))
-        <div class="alert alert-success">
-            {{ session()->get('message') }}
-        </div>
-    @endif
-
     <table class="table">
         <thead>
         <tr class="table-info">
             <th scope="col">ID</th>
-            <th scope="col">name</th>
-            <th scope="col">image</th>
-            <th scope="col">price</th>
-            <th scope="col">star</th>
-            <th scope="col">views</th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">hình ảnh</th>
+            <th scope="col">Danh mục</th>
+            <th scope="col">Giá sản phẩm</th>
+            <th scope="col">Đánh giá</th>
+            <th scope="col">Lượt xem</th>
             <th scope="col">Sửa</th>
             <th scope="col">Xóa</th>
         </tr>
@@ -39,6 +35,7 @@
             <td>{{ $pro->id }}</td>
             <td>{{ $pro->name }}</td>
             <td><img src="{{ asset('images/'.$pro->images) }}" alt="hình ảnh" height="100" width="150"></td>
+            <td>{{ $pro->categories->name }}</td>
             <td>{{ $pro->price }}</td>
             <td>{{ $pro->star }}</td>
             <td>{{ $pro->views }}</td>

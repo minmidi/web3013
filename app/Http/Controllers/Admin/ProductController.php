@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Categories;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,10 @@ class ProductController extends Controller
     // VIEW ADD FORM
     public function add()
     {
-        return view('admin.product.add');
+        $categories = Categories::all();
+        return view('admin.product.add',[
+            'category' =>  $categories
+        ]);
     }
 
     public function save_add(Request $request)
@@ -20,7 +24,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'images' => 'image',
-            'price' => 'required',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'short_desc' => 'required',
             'detail' => 'required',
             'views' => 'required',
@@ -29,6 +33,7 @@ class ProductController extends Controller
         $product = new Product();
         $product['name'] = $request->name;
         $product['images'] = $request->images;
+        $product['cate_id'] = $request->cate_id;
         $product['price'] = $request->price;
         $product['short_desc'] = $request->short_desc;
         $product['detail'] = $request->detail;
@@ -59,9 +64,11 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        $categories = Categories::all();
         $product = Product::find($id);
         return view('admin.product.edit',[
-            'products' => $product
+            'products' => $product,
+            'category' =>  $categories
         ]);
     }
 
@@ -70,7 +77,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'name' => 'required',
             'images' => 'image',
-            'price' => 'required',
+            'price' => 'required|regex:/^\d+(\.\d{1,2})?$/',
             'short_desc' => 'required',
             'detail' => 'required',
             'views' => 'required',
@@ -79,6 +86,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product['name'] = $request->name;
         $product['images'] = $request->images;
+        $product['cate_id'] = $request->cate_id;
         $product['price'] = $request->price;
         $product['short_desc'] = $request->short_desc;
         $product['detail'] = $request->detail;

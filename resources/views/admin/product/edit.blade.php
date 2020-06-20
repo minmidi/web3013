@@ -1,6 +1,7 @@
 @extends('admin.master')
 @section('title','product')
 @section('active','Sản phẩm')
+@section('active_1','active')
 @section('url','Sửa sản phẩm: '.$products->name)
 @section('main')
     <form action="" method="POST" enctype="multipart/form-data" role="form" >
@@ -26,6 +27,18 @@
             @if($errors->has('images'))
                 {{$errors->first('images')}}
             @endif
+        </div>
+
+        <!-- Danh mục sản phẩm -->
+        <div class="form-group m-3">
+            <label for="">Danh mục sản phẩm</label>
+            <select name="cate_id" id="cate_id" class="form-control" >
+            @foreach($category as $cate)
+                <option value="{{ $cate->id}}">
+                    {{ $cate->name }}
+                </option>
+            @endforeach
+            </select>
         </div>
 
         <!-- Giá sản phẩm -->

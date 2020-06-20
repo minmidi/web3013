@@ -17,13 +17,20 @@ use Illuminate\Support\Facades\Session;
 
 Route::prefix('admin')
     ->namespace('Admin')
+    ->middleware('auth')
     ->group(function ()
     {
-        Route::get('products','ProductController@index')->name('products');
-        Route::get('products/del/{id}','ProductController@delete')->name('products_del');
-        Route::get('products/add','ProductController@add')->name('products_add');
-        Route::post('products/add','ProductController@save_add')->name('products_add');
-        Route::get('products/edit/{id}','ProductController@edit')->name('products_edit');
-        Route::post('products/edit/{id}','ProductController@save_edit')->name('products_edit');
+        Route::get('','AdminController@index')->name('admin');
+
+        Route::get('/logout','AdminController@logout') -> name('logout');
+
+        // INCLUDE PRODUCTS ROUTES
+        include('admin/product.php');
+
+        // INCLUDE CATEGORIES ROUTES
+        include('admin/categories.php');
     });
 
+    Route::group(['prefix' => 'admin'], function () {
+        Auth::routes();
+    });
