@@ -155,7 +155,8 @@ return [
         'views' => 'Lượt xem',
         'email' => 'Email',
         'password' => 'Mật khẩu',
-        'confirm_password' => 'Xác nhận mật khẩu'
+        'confirm_password' => 'Xác nhận mật khẩu',
+        'img_url' => 'Đường dẫn'
     ],
 
 ];

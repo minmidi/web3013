@@ -33,6 +33,9 @@ Route::prefix('admin')
         // INCLUDE CATEGORIES ROUTES
         include('admin/categories.php');
 
+        // INCLUDE GALLERIES ROUTES
+        include('admin/galleries.php');
+
     });
 
     Route::group(['prefix' => 'admin'], function () {
