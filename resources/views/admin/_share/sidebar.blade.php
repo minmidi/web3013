@@ -1,17 +1,17 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <div class="pull-left image">
-            <img src="{{ asset('Dashboard/images/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+            <img src="{{ asset('images/'.Auth::user()->images) }}" class="img-circle" alt="User Image">
         </div>
 
         <div class="pull-left info">
-            <p>Alexander</p>
+            <p>{{ Auth::user()->name }}</p>
             <a href="#"><i class="fa fa-circle text-success fa-xs"></i> Online</a>
         </div>
     </div>
 
     <ul class="list-unstyled components">
-        <li>
+        <li class="@yield('active_5')">
             <a href="{{ route('admin') }}"><i class="fas fa-tachometer-alt"></i> Trang chủ</a>
         </li>
         <li class="@yield('active_1')">
@@ -34,6 +34,30 @@
                 </li>
                 <li>
                     <a href="{{ route('categories_add') }}"><i class="fas fa-plus-circle"></i> Thêm danh mục</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="@yield('active_6')">
+            <a href="#gallerySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-folder-open"></i> Ảnh sản phẩm</a>
+            <ul class="collapse list-unstyled" id="gallerySubmenu">
+                <li>
+                    <a href="galleries"><i class="fas fa-list"></i> Danh mục ảnh sản phẩm</a>
+                </li>
+                <li>
+                    <a href="galleries_add"><i class="fas fa-plus-circle"></i> Thêm ảnh</a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="@yield('active_4')">
+            <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-user-cog"></i> Tài khoản</a>
+            <ul class="collapse list-unstyled" id="userSubmenu">
+                <li>
+                    <a href="{{ route('users') }}"><i class="fas fa-list"></i> Danh sách tài khoản</a>
+                </li>
+                <li>
+                    <a href="{{ route('users_add') }}"><i class="fas fa-plus-circle"></i> Thêm tài khoản</a>
                 </li>
             </ul>
         </li>

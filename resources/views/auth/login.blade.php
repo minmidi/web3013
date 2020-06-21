@@ -2,72 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login</title>
-    <link rel="icon" type="image/png" href="/images/icon.ico" />
-
-    <!-- CSS -->
-    <!-- Font Awesome CSS -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/css/all.css') }}">
-    <!-- Boostrap CSS -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/css/bootstrap.css') }}">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="{{ asset('Dashboard/css/login.css') }}">
+	<title>Đăng nhập</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/bootstrap.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/main.css') }}">
+	<!--===============================================================================================-->
 </head>
 
-<body class="body-container">
+<body>
 
-<div class="container-wrapper">
-    <form action="" method="POST" class="form-signin">
-        @csrf
-        <h2 class="form-signin-heading text-center">Đăng nhập</h2>
-        <div class="form-group">
-            <input type="text" class="form-control" name="email" id='email' placeholder="Nhập email">
-            @if($errors->has('email'))
-                {{$errors->first('email')}}
-            @endif
-        </div>
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url('../Dashboard/images/bg-01.jpg');">
+					<span class="login100-form-title-1">
+						Đăng nhập
+					</span>
+				</div>
 
-        <div class="form-group">
-            <input type="password" class="form-control" name="password" id="password" placeholder="Nhập mật khẩu">
-            @if($errors->has('password'))
-                {{$errors->first('password')}}
-            @endif
-        </div>
+				<form class="login100-form validate-form" method="POST">
+					@csrf
+					<div class="wrap-input100 validate-input m-b-26">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" name="email" id="email" placeholder="Nhập email">
+						<span class="focus-input100"></span>
+						@if($errors->has('email'))
+							{{$errors->first('email')}}
+						@endif
+					</div>
 
-        <label class="checkbox">
-            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
-            Ghi nhớ đăng nhập
-        </label>
+					<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+						<span class="label-input100">Mật khẩu</span>
+						<input class="input100" type="password" name="password" id="password"
+							placeholder="Nhập mật khẩu">
+						<span class="focus-input100"></span>
+						@if($errors->has('password'))
+							{{$errors->first('password')}}
+						@endif
+					</div>
 
-        <div class="form-group">
-            <label for="">
-                <a href="{{ route('password.request') }}">Quên mật khẩu?</a>
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block">
-            Đăng nhập
-        </button>
-    </form>
-</div>
+					<div class="flex-sb-m w-full p-b-30">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" type="checkbox" value="remember-me" id="ckb1" name="rememberMe">
+							<label class="label-checkbox100" for="ckb1">
+								Nhớ đăng nhập
+							</label>
+						</div>
 
+						<div>
+							<a href="{{ route('password.request') }}" class="txt1">
+								Quên mật khẩu?
+							</a>
+						</div>
+					</div>
 
-<!-- SCRIPT -->
-<!-- Jquery JS -->
-<script src="{{ URL::asset('Admins/script/jquery-3.4.1.js') }}"></script>
-<!-- Font Awesome JS -->
-<script src="{{ URL::asset('Admins/script/all.js') }}"></script>
-<!-- Boostrap JS -->
-<script src="{{ URL::asset('Admins/script/bootstrap.js') }}"></script>
-<!-- Popper JS -->
-<script src="{{ URL::asset('Admins/script/popper.min.js') }}"></script>
-<!-- Validate From JS -->
-<script src="{{ URL::asset('Admins/script/validate.js') }}"></script>
-<!-- Custom JS -->
-<script src="{{ URL::asset('Admins/script/scr-db.js') }}"></script>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Đăng nhập
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!--===============================================================================================-->
+	<script src="{{ asset('Dashboard/js/jquery.js') }}"></script>
+	<script src="{{ asset('Dashboard/js/bootstrap.js') }}"></script>
+	<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<script src="{{ asset('Dashboard/js/main.js') }}"></script>
 
 </body>
 
 </html>
+
+<!-- <link rel="stylesheet" href=""> -->

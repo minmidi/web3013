@@ -10,7 +10,7 @@ use App\Models\Categories;
 class ProductController extends Controller
 {
 
-    // VIEW ADD FORM
+    // VIEW ADD FORM PRODUCT
     public function add()
     {
         $categories = Categories::all();
@@ -19,6 +19,7 @@ class ProductController extends Controller
         ]);
     }
 
+    // SAVE CREATED PRODUCT
     public function save_add(Request $request)
     {
         $this->validate($request,[
@@ -61,7 +62,7 @@ class ProductController extends Controller
         return redirect()->route('products');
     }
 
-
+    //VIEW EDIT PRODUCT  
     public function edit($id)
     {
         $categories = Categories::all();
@@ -72,6 +73,7 @@ class ProductController extends Controller
         ]);
     }
 
+    // SAVE EIDT PRODUCTS
     public function save_edit(Request $request, $id)
     {
         $this->validate($request,[

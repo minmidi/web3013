@@ -8,12 +8,14 @@ use App\Models\Categories;
 
 class CategoryController extends Controller
 {
-     // VIEW ADD FORM
+     // VIEW ADD FORM CATEGORY
      public function add()
      {
          return view('admin/categories/add');
      }
  
+
+     // SAVE FORM CATEGORY
      public function save_add(Request $request)
      {
         $this->validate($request,[
@@ -30,7 +32,7 @@ class CategoryController extends Controller
         return redirect()->route('categories');
      }
  
- 
+     // VIEW EDIT FORM CATEGORY
      public function edit($id)
      {
         $categories = Categories::find($id);
@@ -39,6 +41,7 @@ class CategoryController extends Controller
         ]);
      }
  
+     // SAVE EDIT FORM CATEGORY
      public function save_edit(Request $request, $id)
      {
         $this->validate($request,[
@@ -55,14 +58,14 @@ class CategoryController extends Controller
         return redirect()->route('categories');
      }
  
-     // DELETE CATEGORIES
+     // DELETE CATEGORY
      public function delete($id)
      {
         Categories::find($id)->delete();
         return redirect()->back();
      }
  
-     // VIEW CATEGORIES
+     // VIEW CATEGORY
      public function index()
      {
          $category = Categories::orderby('created_at','desc')

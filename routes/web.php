@@ -24,11 +24,15 @@ Route::prefix('admin')
 
         Route::get('/logout','AdminController@logout') -> name('logout');
 
+        // INCLUDE PRODUCTS USERS
+        include('admin/user.php');
+
         // INCLUDE PRODUCTS ROUTES
         include('admin/product.php');
 
         // INCLUDE CATEGORIES ROUTES
         include('admin/categories.php');
+
     });
 
     Route::group(['prefix' => 'admin'], function () {

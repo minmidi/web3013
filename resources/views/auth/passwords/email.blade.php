@@ -1,47 +1,74 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<head>
+	<title>Quên mật khẩu</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/bootstrap.css') }}">
+	<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('Dashboard/css/main.css') }}">
+	<!--===============================================================================================-->
+</head>
 
-                <div class="card-body">
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title" style="background-image: url('../../Dashboard/images/bg-01.jpg');">
+					<span class="login100-form-title-1">
+						Quên tài khoản
+					</span>
+				</div>
+
+				<form action="{{ route('password.email') }}" class="login100-form validate-form" method="POST" >
+                    @csrf
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
+					<div class="wrap-input100 validate-input m-b-26">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="email" name="email" id="email" placeholder="Nhập email">
+						<span class="focus-input100"></span>
+						<!-- @if($errors->has('email'))
+							{{$errors->first('email')}}
+						@endif -->
+                    </div>
+                    
+                    <div class="flex-sb-m w-full p-b-30">
+						<div>
+							<a href="{{ route('admin') }}" class="txt1">
+								Đăng nhập
+							</a>
+						</div>
+					</div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+					
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Xác nhận
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+	<!--===============================================================================================-->
+	<script src="{{ asset('Dashboard/js/jquery.js') }}"></script>
+	<script src="{{ asset('Dashboard/js/bootstrap.js') }}"></script>
+	<!--===============================================================================================-->
+	<!--===============================================================================================-->
+	<script src="{{ asset('Dashboard/js/main.js') }}"></script>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
+</body>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+</html>
+
+<!-- <link rel="stylesheet" href=""> -->

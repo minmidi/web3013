@@ -15,7 +15,7 @@ class Product extends Model
     public function categories(){
         return $this->belongsTo('App\Models\categories', 'cate_id', 'id');
     }
-
+    
     // SEARCH FUNCTIONS
     public function scopeSearch($query, ...$colums)
     {

@@ -44,7 +44,7 @@
         <!-- Giá sản phẩm -->
         <div class="form-group m-3">
             <label for="" class="mt-3">Giá sản phẩm</label>
-            <input type="text" class="form-control" name="price" id='price' placeholder="Nhập giá phòng" value="{{ $products->price }}">
+            <input type="text" class="form-control" name="price" id='price' placeholder="Nhập giá sản phẩm" value="{{ $products->price }}">
             <!--Gọi validate -->
             @if($errors->has('price'))
                 {{$errors->first('price')}}
